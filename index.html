@@ -7,8 +7,8 @@
     <title>Midtrans</title>
   </head>
   <body>
+    <input type="text" id="snap-token" class="form-input" />
     <button id="pay-button">Pay!</button>
-    <pre><div id="result-json">JSON result will appear here after payment:<br></div></pre>
 
     <!-- TODO: Remove ".sandbox" from script src URL for production environment. Also input your client key in "data-client-key" -->
     <script
@@ -17,8 +17,8 @@
     ></script>
     <script type="text/javascript">
       document.getElementById("pay-button").onclick = function () {
-        // SnapToken acquired from previous step
-        snap.pay("2503c218-7f8c-4903-9225-326649220b8e", {
+        var snapToken = document.getElementById("snap-token").value;
+        snap.pay(snapToken, {
           onSuccess: function (result) {
             console.log("success");
             console.log(result);
